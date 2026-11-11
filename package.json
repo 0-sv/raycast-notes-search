@@ -1,0 +1,65 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "notes-search",
+  "title": "Notes Search",
+  "description": "Full-text search over Markdown notes with ripgrep. Opens hits in Typora.",
+  "icon": "icon.png",
+  "author": "sv",
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "search-notes",
+      "title": "Search Notes",
+      "description": "Search the text of every note and open the hit in Typora",
+      "mode": "view"
+    },
+    {
+      "name": "search-mac",
+      "title": "Search Mac",
+      "description": "Spotlight full-text search with a preview of the match or a Quick Look thumbnail",
+      "mode": "view",
+      "preferences": [
+        {
+          "name": "searchScope",
+          "type": "textfield",
+          "required": false,
+          "default": "~",
+          "title": "Search Folder",
+          "description": "Spotlight searches only inside this folder. Use / for the whole disk."
+        },
+        {
+          "name": "includeHidden",
+          "type": "checkbox",
+          "required": false,
+          "default": false,
+          "title": "Noise",
+          "label": "Include ~/Library, node_modules and hidden folders",
+          "description": "Off by default, because these folders flood the results with app data."
+        }
+      ]
+    }
+  ],
+  "preferences": [
+    {
+      "name": "notesDir",
+      "type": "textfield",
+      "required": false,
+      "default": "~/Nextcloud/Notes",
+      "title": "Notes Folder",
+      "description": "The folder to search. ~ is expanded."
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "2.8.2",
+    "@raycast/utils": "2.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "22.19.17",
+    "@types/react": "19.0.10",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop"
+  }
+}
